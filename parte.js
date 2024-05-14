@@ -18,4 +18,9 @@ telefoneInput.addEventListener('input',() => {
     }
 
     target.value = formattedValue;
+    target.style.classList.add('green-text');
+
+
+
 });
+
