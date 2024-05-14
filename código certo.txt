@@ -1,0 +1,20 @@
+var telefoneInput = document.getElementById('telefone');
+
+telefoneInput.addEventListener('input', function(event) {
+var inputValue = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+var formattedValue = '';
+
+if (inputValue.length > 0) {
+    formattedValue = '(' + inputValue.substring(0, 2);
+}
+if (inputValue.length > 2) {
+    formattedValue += ') ' + inputValue.substring(2, 7);
+}
+if (inputValue.length > 6) {
+    formattedValue += '-' + inputValue.substring(7, 11);
+}
+
+event.target.value = formattedValue;
+});
+
+o que dá certo 
