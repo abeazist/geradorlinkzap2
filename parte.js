@@ -1,9 +1,8 @@
 const telefoneInput = document.getElementById('telefone');
-const linkzap = document.querySelectorAll('linkzap');
-const enviar = document.querySelectorAll('enviar');
+const linkzap = document.querySelectorAll("[linkzap]");
+const enviar = document.querySelectorAll("[enviar]");
 
-
-
+//APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
 var inputValue = event.target.value.replace(/\D/g, ''); 
 var formattedValue = ''; 
@@ -26,8 +25,27 @@ event.target.value = formattedValue
 
  });
  
+ //COPIAR LINK
  linkzap.addEventListener('click',() => {
-    var 
+     criaLink();
  })
+
+ function criaLink() {
+    const copiar = document.createElement("div");
+    const textoLink = document.createElement("p");
+
+    numeroTel = telefoneInput.value;
+    linkWhatszap = 'https://wa.me/55${numeroTel}'
+    copiar.id = "link";
+    textoLink.id = "clickText";
+
+    navigator.clipboard.writeText(linkWhatszap).then(()=>{
+        copiar.innerHTML = `https://wa.me/55${numeroTel}`;
+        textoClicar.innerHTML = "Clique no link para copiar";
+        box1.appendChild(copy);
+        box1.appendChild(textoClicar);
+        alert('Link Copiado')
+    })
+ }
  
  
