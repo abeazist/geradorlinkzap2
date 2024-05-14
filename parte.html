@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="parte.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
+    </style>
+    <title>Gerador de Link WhatsApp</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Link<p>t</p> <img width="30px" src="whatsapp.svg" alt=""></h1><br>
+        <div class="container-filho">
+            <input id="telefone" placeholder="Telefone">
+            <button linkZap style="border: 2px solid black; border-radius: 5px;"><i style="color:white" class="fas fa-link"></i></button>
+            <button enviar style="border: 2px solid black; border-radius: 5px;"><i class="fas fa-paper-plane"></i></button>
+        </div> 
+    </div>
+    
+    <script>
+        var telefoneInput = document.getElementById('telefone');
+
+        telefoneInput.addEventListener('input', function(event) {
+            var inputValue = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+            var formattedValue = '';
+
+            // Aplica a máscara
+            if (inputValue.length > 0) {
+                formattedValue = '(' + inputValue.substring(0, 2);
+            }
+            if (inputValue.length > 2) {
+                formattedValue += ') ' + inputValue.substring(2, 7);
+            }
+            if (inputValue.length > 6) {
+                formattedValue += '-' + inputValue.substring(7, 11);
+            }
+
+            event.target.value = formattedValue;
+        });
+    </script>
+</body>
+</html>
