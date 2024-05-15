@@ -18,34 +18,48 @@ if (inputValue.length > 2) {
 if (inputValue.length > 6) { 
     formattedValue += '-' + inputValue.substring(7, 11);
 
-} 
-    
+} if (inputValue.length ===11){
+    event.target.style.color="green";
+}else{
+    event.target.style.color="";
+}
+
 event.target.value = formattedValue
 //telefoneInput.style.color='green'
 
  });
  
- //COPIAR LINK
+ //GERAR LINK
  linkzap.addEventListener('click',() => {
      criaLink();
  })
 
  function criaLink() {
-    const copiar = document.createElement("div");
-    const textoLink = document.createElement("p");
-
     numeroTel = telefoneInput.value;
-    linkWhatszap = 'https://wa.me/55${numeroTel}'
-    copiar.id = "link";
-    textoLink.id = "clickText";
+    linkWhatszap = 'https://wa.me/55'+numeroTel;
+    texto = "Clique no link para copiar";
 
-    navigator.clipboard.writeText(linkWhatszap).then(()=>{
-        copiar.innerHTML = `https://wa.me/55${numeroTel}`;
-        textoClicar.innerHTML = "Clique no link para copiar";
-        box1.appendChild(copy);
-        box1.appendChild(textoClicar);
-        alert('Link Copiado')
-    })
- }
- 
- 
+    // ESTILIZACAO link
+    document.getElementById('linkCopiado').innerText = linkWhatszap;
+    document.getElementById('linkCopiado').style.display = 'flex';
+    document.getElementById('texto').style.justifyContent = 'center';
+    document.getElementById('linkCopiado').style.border = '1px solid black';
+    document.getElementById('linkCopiado').style.padding = '1px';
+    document.getElementById('linkCopiado').style.marginTop = '7px';
+    document.getElementById('linkCopiado').style.borderRadius = '8px';
+    document.getElementById('linkCopiado').style.fontSize='small';
+    document.getElementById('linkCopiado').style.userSelect='none';
+
+
+    //ESTILIZACAOtexto
+    document.getElementById('texto').innerText = texto;
+    document.getElementById('texto').style.display = 'flex';
+    document.getElementById('texto').style.justifyContent = 'center';
+    document.getElementById('texto').style.color = 'black';
+    document.getElementById('texto').style.fontSize='smaller';
+    
+}
+
+navigator.clipboard.writeText(linkWhatszap).then(()=>{
+
+})
