@@ -1,6 +1,7 @@
 const telefoneInput = document.getElementById('telefone');
 const linkzap = document.querySelectorAll("[linkzap]");
 const enviar = document.querySelectorAll("[enviar]");
+const copiar = document.getElementById("[copiar]")
 
 //APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
@@ -60,6 +61,11 @@ event.target.value = formattedValue
     
 }
 
-navigator.clipboard.writeText(linkWhatszap).then(()=>{
+//COPIAR~
+linkCopiado.addEventListener('click',() =>{
+    navigator.clipboard.writeText(linkWhatszap).then(()=>{
 
-})
+    })
+
+}
+)
