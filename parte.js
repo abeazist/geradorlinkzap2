@@ -37,13 +37,17 @@ event.target.value = formattedValue
 
  linkCopiado.addEventListener('click',() => {
     copiaLink()
+    limparMensagem()
+    atualizarMensagem()
  })
 
+
+
  function criaLink() {
-    numeroTelefone = telefoneInput.value;
-    texto = "Clique no link para copiar";
-    formatacao= numeroTelefone.replace(/\D/g, '')
-    linkWhatszap = `https://wa.me/55${formatacao}`;
+    var numeroTelefone = telefoneInput.value;
+    var texto = "Clique no link para copiar";
+    var formatacao= numeroTelefone.replace(/\D/g, '')
+    var linkWhatszap = `https://wa.me/55${formatacao}`;
 
     // ESTILIZACAO link
     document.getElementById('linkCopiado').innerText = linkWhatszap;
@@ -68,11 +72,18 @@ event.target.value = formattedValue
 
 //COPIAR~
 function copiaLink(){
-    navigator.clipboard.writeText(linkWhatszap.innerHTML).then(()=>{
-        texto.innerHTML= ("Link Copiado para a área de transferência")
-        alert('Copiado')
-    
-        })
-    
-    }
-    
+    var textoParaCopiar = document.getElementById('linkCopiado').innerText;
+   
+
+    // Copia o texto para a área de transferência
+    navigator.clipboard.writeText(textoParaCopiar).then(() => {
+        alert('Link copiado para a área de transferência');
+    })
+
+}
+function limparMensagem() {
+    document.getElementById('texto').innerText = '';
+}
+function atualizarMensagem() {
+    document.getElementById('texto').innerText = 'Link copiado para área de transferência';
+}
