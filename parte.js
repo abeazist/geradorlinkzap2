@@ -19,14 +19,14 @@ if (inputValue.length > 2) {
 if (inputValue.length > 6) { 
     formattedValue += '-' + inputValue.substring(7, 11);
 
-} if (inputValue.length ===11){
+} if (inputValue.length === 11){
     event.target.style.color="green";
 }else{
     event.target.style.color="";
 }
 
 event.target.value = formattedValue
-//telefoneInput.style.color='green'
+
 
  });
  
@@ -35,23 +35,28 @@ event.target.value = formattedValue
      criaLink();
  })
 
+ linkCopiado.addEventListener('click',() => {
+    copiaLink()
+ })
+
  function criaLink() {
-    numeroTel = telefoneInput.value;
-    linkWhatszap = 'https://wa.me/55'+numeroTel;
+    numeroTelefone = telefoneInput.value;
     texto = "Clique no link para copiar";
+    formatacao= numeroTelefone.replace(/\D/g, '')
+    linkWhatszap = `https://wa.me/55${formatacao}`;
 
     // ESTILIZACAO link
     document.getElementById('linkCopiado').innerText = linkWhatszap;
     document.getElementById('linkCopiado').style.display = 'flex';
-    document.getElementById('texto').style.justifyContent = 'center';
     document.getElementById('linkCopiado').style.border = '1px solid black';
     document.getElementById('linkCopiado').style.padding = '1px';
     document.getElementById('linkCopiado').style.marginTop = '7px';
     document.getElementById('linkCopiado').style.borderRadius = '8px';
     document.getElementById('linkCopiado').style.fontSize='small';
-    document.getElementById('linkCopiado').style.userSelect='none';
-
-
+   
+    
+    
+    
     //ESTILIZACAOtexto
     document.getElementById('texto').innerText = texto;
     document.getElementById('texto').style.display = 'flex';
@@ -62,10 +67,12 @@ event.target.value = formattedValue
 }
 
 //COPIAR~
-linkCopiado.addEventListener('click',() =>{
-    navigator.clipboard.writeText(linkWhatszap).then(()=>{
-
-    })
-
-}
-)
+function copiaLink(){
+    navigator.clipboard.writeText(linkWhatszap.innerHTML).then(()=>{
+        texto.innerHTML= ("Link Copiado para a área de transferência")
+        alert('Copiado')
+    
+        })
+    
+    }
+    
