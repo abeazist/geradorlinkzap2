@@ -2,6 +2,7 @@ const telefoneInput = document.getElementById('telefone');
 const linkzap = document.querySelectorAll("[linkzap]");
 const enviar = document.querySelectorAll("[enviar]");
 const copiar = document.getElementById("[copiar]")
+var linkWhatszap = '';
 
 //APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
@@ -36,9 +37,13 @@ event.target.value = formattedValue
  })
 
  linkCopiado.addEventListener('click',() => {
-    copiaLink()
-    limparMensagem()
-    atualizarMensagem()
+    copiaLink();
+    limparMensagem();
+    atualizarMensagem();
+ })
+
+ enviar.addEventListener('click',() =>{
+    abreJanela();
  })
 
 
@@ -73,17 +78,14 @@ event.target.value = formattedValue
 //COPIAR~
 function copiaLink(){
     var textoParaCopiar = document.getElementById('linkCopiado').innerText;
-   
-
-    // Copia o texto para a área de transferência
     navigator.clipboard.writeText(textoParaCopiar).then(() => {
-        alert('Link copiado para a área de transferência');
+        document.getElementById('texto').innerText = 'Link copiado para área de transferência';
     })
 
 }
-function limparMensagem() {
-    document.getElementById('texto').innerText = '';
-}
-function atualizarMensagem() {
-    document.getElementById('texto').innerText = 'Link copiado para área de transferência';
+
+function abreJanela(){
+    var janela = window.open('https://api.whatsapp.com/send/?phone'+{formatacao}, '_blank');
+    janela.focus();
+
 }
