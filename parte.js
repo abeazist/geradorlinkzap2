@@ -53,9 +53,9 @@ event.target.value = formattedValue });
  })
 
  function criaLink() {
-     numeroTelefone = telefoneInput.value;
-     texto = "Clique no link para copiar";
-     formatacao= numeroTelefone.replace(/\D/g, '')
+    var numeroTelefone = telefoneInput.value;
+    var texto = "Clique no link para copiar";
+    var formatacao= numeroTelefone.replace(/\D/g, '')
     var linkWhatszap = `https://wa.me/55${formatacao}`;
 
     // ESTILIZACAO link
@@ -66,9 +66,6 @@ event.target.value = formattedValue });
     document.getElementById('linkCopiado').style.marginTop = '7px';
     document.getElementById('linkCopiado').style.borderRadius = '8px';
     document.getElementById('linkCopiado').style.fontSize='small';
-   
-    
-    
     
     //ESTILIZACAOtexto
     document.getElementById('texto').innerText = texto;
@@ -81,7 +78,7 @@ event.target.value = formattedValue });
 
 //COPIAR~
 function copiaLink(){
-    var textoParaCopiar = document.getElementById('linkCopiado').innerText;
+    var textoParaCopiar = document.getElementById('linkCopiado').innerText; //API clipboard
     navigator.clipboard.writeText(textoParaCopiar).then(() => {
         document.getElementById('texto').innerText = 'Link copiado para área de transferência';
     })
