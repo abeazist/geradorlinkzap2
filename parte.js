@@ -5,6 +5,7 @@ const linkCopiado = document.querySelector('#linkCopiado');
 const numeroTelefone = telefoneInput.value
 const formatacao= numeroTelefone.replace(/\D/g, '');
 const url = `https://wa.me/55${formatacao}`;
+const abreLink = document.getElementById('abreLink');
 
 //APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
@@ -39,11 +40,14 @@ event.target.value = formattedValue
  })
 
  abrejanela.addEventListener('click',() =>{
-    openInNewTab(url)
+    abreLink.href=`https://wa.me/55${telefoneInput.value.replace(/\D/g, '')}`;
+    abreLink.target="_blank";
+    
  })
 
  telefoneInput.addEventListener('input',()=>{
-    
+    document.getElementById('texto').innerText = texto;
+    texto = '';
  })
 
 
@@ -83,9 +87,3 @@ function copiaLink(){
     })
 
 }
-
-function openInNewTab(url){
-    const win = window.open(url,'_blank')
-    win.focus()
-}
-
