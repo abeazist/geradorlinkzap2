@@ -3,13 +3,13 @@ const linkZap = document.querySelector('#linkzap');
 const abrejanela = document.querySelector('#abrejanela');
 const linkCopiado = document.querySelector('#linkCopiado');
 const numeroTelefone = telefoneInput.value
-const formatacao= numeroTelefone.replace(/\D/g, '');
+const formatacao= numeroTelefone.replace(/\D/g, ''); //expressão regular
 const url = `https://wa.me/55${formatacao}`;
 const abreLink = document.getElementById('abreLink');
 
 //APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
-var inputValue = event.target.value.replace(/\D/g, ''); 
+var inputValue = event.target.value.replace(/\D/g, ''); //expressão regular
 var formattedValue = ''; 
 
 if (inputValue.length > 0) { 
@@ -29,10 +29,7 @@ if (inputValue.length > 6) {
     event.target.style.color="";
 }
 
-event.target.value = formattedValue
-
-
- });
+event.target.value = formattedValue });
  
  
  linkCopiado.addEventListener('click',() => {
@@ -45,17 +42,20 @@ event.target.value = formattedValue
     
  })
 
- telefoneInput.addEventListener('input',()=>{
+ telefoneInput.addEventListener('focus',()=>{
     document.getElementById('texto').innerText = texto;
-    texto = '';
+    document.getElementById('texto').innerText = '';
+    
  })
 
+ telefoneInput.addEventListener('click',() =>{
 
+ })
 
  function criaLink() {
-    var numeroTelefone = telefoneInput.value;
-    var texto = "Clique no link para copiar";
-    var formatacao= numeroTelefone.replace(/\D/g, '')
+     numeroTelefone = telefoneInput.value;
+     texto = "Clique no link para copiar";
+     formatacao= numeroTelefone.replace(/\D/g, '')
     var linkWhatszap = `https://wa.me/55${formatacao}`;
 
     // ESTILIZACAO link
