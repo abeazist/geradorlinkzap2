@@ -1,8 +1,10 @@
 const telefoneInput = document.getElementById('telefone');
-const linkzap = document.querySelectorAll("[linkzap]");
-const enviar = document.querySelectorAll("[enviar]");
-const copiar = document.getElementById("[copiar]")
-var linkWhatszap = '';
+const linkZap = document.querySelector('#linkzap');
+const abrejanela = document.querySelector('#abrejanela');
+const linkCopiado = document.querySelector('#linkCopiado');
+const numeroTelefone = telefoneInput.value
+const formatacao= numeroTelefone.replace(/\D/g, '');
+const url = `https://wa.me/55${formatacao}`;
 
 //APLICA MASCARA
 telefoneInput.addEventListener('input',() => { 
@@ -31,19 +33,17 @@ event.target.value = formattedValue
 
  });
  
- //GERAR LINK
- linkzap.addEventListener('click',() => {
-     criaLink();
- })
-
+ 
  linkCopiado.addEventListener('click',() => {
     copiaLink();
-    limparMensagem();
-    atualizarMensagem();
  })
 
- enviar.addEventListener('click',() =>{
-    abreJanela();
+ abrejanela.addEventListener('click',() =>{
+    openInNewTab(url)
+ })
+
+ telefoneInput.addEventListener('input',()=>{
+    
  })
 
 
@@ -84,8 +84,8 @@ function copiaLink(){
 
 }
 
-function abreJanela(){
-    var janela = window.open('https://api.whatsapp.com/send/?phone'+{formatacao}, '_blank');
-    janela.focus();
-
+function openInNewTab(url){
+    const win = window.open(url,'_blank')
+    win.focus()
 }
+
